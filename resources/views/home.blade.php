@@ -56,8 +56,7 @@
                                     </h4>
                                     <p class="card-text">Bagi kamu yang saat ini akan memasuki dunia
                                         kerja, sudah sejauh apanih
-                                        persiapan karier yang kamu punya? Pengin melamar kerja tapi masih
-                                        bingung ...</p>
+                                        persiapan karier yang kamu punya?</p>
                                 </div>
                             </div>
                         </div>
