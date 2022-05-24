@@ -76,7 +76,7 @@ class AuthController extends Controller
     // method for user logout and delete token
     public function logout()
     {
-        // auth()->user()->tokens()->delete();
+        auth()->user()->tokens()->delete();
 
         $response = [
             'meta' => [

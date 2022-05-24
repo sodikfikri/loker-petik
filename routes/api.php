@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\AlumniController;
+use App\Http\Controllers\API\PartnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +22,19 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
 
+    Route::get('/alumni/list', [AlumniController::class, 'alumni_list']);
+    Route::get('/alumni/detail', [AlumniController::class, 'alumni_detail']);
+    Route::post('/alumni/store', [AlumniController::class, 'alumni_add']);
+    Route::put('/alumni/update', [AlumniController::class, 'alumni_update']);
+    Route::delete('/alumni/destroy', [AlumniController::class, 'alumni_destroy']);
+
+    Route::get('/partner/list', [PartnerController::class, 'list']);
+    Route::post('/partner/store', [PartnerController::class, 'store']);
+    Route::post('/partner/update', [PartnerController::class, 'update']);
+    Route::get('/partner/detail', [PartnerController::class, 'show']);
+    Route::delete('/partner/destroy', [PartnerController::class, 'destroy']);
+    
     Route::post('/logout', [AuthController::class, 'logout']);
     
 });
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
