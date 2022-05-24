@@ -15,7 +15,13 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('login');
+            $response = [
+                'meta' => [
+                    'code' => '401',
+                    'message' => 'Error Autentication: No Token Provided!'
+                ]
+            ];
+            abort(response()->json($response, 401));
         }
     }
 }
