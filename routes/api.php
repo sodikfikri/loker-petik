@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\AlumniController;
 use App\Http\Controllers\API\PartnerController;
+use App\Http\Controllers\API\JobsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,12 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::post('/partner/update', [PartnerController::class, 'update']);
     Route::get('/partner/detail', [PartnerController::class, 'show']);
     Route::delete('/partner/destroy', [PartnerController::class, 'destroy']);
+
+    Route::post('/job/add', [JobsController::class, 'store']);
+    Route::put('/job/update', [JobsController::class, 'update']);
+    Route::get('/job/list', [JobsController::class, 'list']);
+    Route::get('/job/detail', [JobsController::class, 'detail']);
+    Route::delete('/job/destroy', [JobsController::class, 'destroy']);
     
     Route::post('/logout', [AuthController::class, 'logout']);
     
