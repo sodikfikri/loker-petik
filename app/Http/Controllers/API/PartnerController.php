@@ -55,7 +55,7 @@ class PartnerController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'company_name' => 'required',
-                'file' => 'required|mimes:png,jpg,jpeg,pdf|max:2048'
+                'file' => 'required|mimes:png,jpg,jpeg,pdf'
             ]);
 
             if ($validator->fails()) { // validation is fail
@@ -231,4 +231,5 @@ class PartnerController extends Controller
             return response()->json($response, 400);
         }
     }
+
 }
