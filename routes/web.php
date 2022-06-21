@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,4 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/mitra-ikal', function () {
-    return view('mitra-ikal');
-});
+Route::get('/mitra-ikal', [Controller::class, 'mitra']);

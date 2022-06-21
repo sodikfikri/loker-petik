@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Validator;
+use Session;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Alumni;
@@ -103,7 +104,7 @@ class AuthController extends Controller
     }
 
     // method for user logout and delete token
-    public function logout()
+    public function logout(Request $request)
     {
         auth()->user()->tokens()->delete();
 
@@ -115,5 +116,24 @@ class AuthController extends Controller
         ];
         
         return response()->json($response, 200);
+    }
+
+    public function get_cookie($cookie_name) {
+        try {
+            $data = (array)json_decode(base64_decode(base64_decode($_COOKIE[$cookie_name])));
+        } catch(\Exception $e) {
+            $data = [];
+        }
+        return $data;
+    }
+
+    public function set_cookie($name, $data) {
+        $data = base64_encode(base64_encode(json_encode($data)));
+        header('Set-Cookie: '.$name.'='.$data.'; path=/; httpOnly');
+    }
+
+    public function del_cookie($name) {
+        $cookie_name = $name;
+        header('Set-Cookie: '.$cookie_name.'=; path=/; httpOnly');
     }
 }

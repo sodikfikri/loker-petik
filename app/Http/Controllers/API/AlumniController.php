@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Exception;
 use Validator;
+use Session;
 
 use App\Models\Alumni;
 
@@ -18,6 +19,11 @@ class AlumniController extends Controller
         try {
             $list = DB::table('alumni')->get();
 
+            foreach($list as $key => $val) {
+                if ($val->cv != null) {
+                    $val->cv = 'http://localhost:8000/files/'.$val->cv;
+                }
+            }
             if (count($list) === 0) {
                 $response = [
                     'meta' => [
