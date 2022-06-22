@@ -19,6 +19,14 @@ class PartnerController extends Controller
         try {
             $list = DB::table('partner')->get();
 
+            foreach($list as $key => $val) {
+                if ($val->picture != null) {
+                    $val->picture = 'http://localhost:8000/files/'.$val->picture;
+                } else {
+                    $val->picture = 'http://localhost:8000/files/no-img.jpeg';
+                }
+            }
+
             if (count($list) === 0) {
                 $response = [
                     'meta' => [
