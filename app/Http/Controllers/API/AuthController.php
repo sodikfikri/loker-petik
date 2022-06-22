@@ -13,6 +13,8 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Alumni;
 
+session_start();
+
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -90,7 +92,7 @@ class AuthController extends Controller
         $user = User::where('email', $request['email'])->firstOrFail();
         
         $token = $user->createToken('auth_token')->plainTextToken;
-
+        $_SESSION["token"] = $token;
         $response = [
             'meta' => [
                 'code' => '200',
