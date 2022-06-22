@@ -23,3 +23,11 @@ Route::get('/login', function () {
 });
 
 Route::get('/mitra-ikal', [Controller::class, 'mitra']);
+
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+
+Route::get('/new_loker', function () {
+    return view('new_loker');
+});

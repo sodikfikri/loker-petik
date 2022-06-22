@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">
+                        <a class="nav-link text-white" href="new_loker">
                             LOWONGAN BARU
                         </a>
                     </li>
@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">
+                        <a class="nav-link text-white" href="tentang">
                             TENTANG
                         </a>
                     </li>
