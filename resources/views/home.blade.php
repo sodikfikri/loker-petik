@@ -94,5 +94,9 @@
             </div>
         </div>
     </div>
+    <script>
+        var token = '<?php echo $token ?>'
+    </script>
+    <script src="{{ asset('js/home.js') }}"></script>
     <!-- content-wrapper ends -->
 @endsection

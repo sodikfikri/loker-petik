@@ -8,32 +8,42 @@
                     <a class="navbar-brand brand-logo" href="index.html">
                         <img src="assets/images/logo-lokerikal.png"
                             alt="logo" /></a>
-                    {{-- <h3 class="font-weight-bold text-white mb-0">LOKER PETIK</h3> --}}
+                    <h3 class="font-weight-bold text-white mb-0">LOKER PETIK</h3> 
                 </div>
                 <ul class="navbar-nav ml-lg-5 navbar-nav-right">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/">
+                    <li class="nav-item <?php if (request()->segment(1) == null || request()->segment(1) == 'register') {
+                        echo "display-0";
+                    } ?>" >
+                        <a class="nav-link text-white" href="/home">
                             HOME
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php if (request()->segment(1) == null || request()->segment(1) == 'register') {
+                        echo "display-0";
+                    } ?>">
                         <a class="nav-link text-white" href="new_loker">
                             LOWONGAN BARU
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php if (request()->segment(1) == null || request()->segment(1) == 'register') {
+                        echo "display-0";
+                    } ?>">
                         <a class="nav-link text-white" href="/mitra-ikal">
                             MITRA IKAL
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php if (request()->segment(1) == null || request()->segment(1) == 'register') {
+                        echo "display-0";
+                    } ?>">
                         <a class="nav-link text-white" href="tentang">
                             TENTANG
                         </a>
                     </li>
-                    <li class="nav-item ml-5">
-                        <a class="nav-link text-white" href="/login">
-                            LOGIN
+                    <li class="nav-item ml-5 <?php if (request()->segment(1) == null || request()->segment(1) == 'register') {
+                        echo "display-0";
+                    } ?>">
+                        <a class="nav-link text-white" href="#">
+                            LOGOUT
                         </a>
                     </li>
                     <li class="nav-item nav-toggler-item-right d-lg-none">
