@@ -12,11 +12,14 @@ use Session;
 
 use App\Models\Alumni;
 
+session_start();
+
 class AlumniController extends Controller
 {
     public function alumni_list(Request $request) 
     {
         try {
+            dd($_SESSION["token"]);
             $list = DB::table('alumni')->get();
 
             foreach($list as $key => $val) {
