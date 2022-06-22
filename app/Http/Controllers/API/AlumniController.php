@@ -19,7 +19,6 @@ class AlumniController extends Controller
     public function alumni_list(Request $request) 
     {
         try {
-            dd($_SESSION["token"]);
             $list = DB::table('alumni')->get();
 
             foreach($list as $key => $val) {
@@ -244,6 +243,33 @@ class AlumniController extends Controller
     
             return response()->json($response, 200);
 
+        } catch (Exception $e) {
+            $response = [
+                'meta' => [
+                    'code' => '400',
+                    'message' => $e->getMessage()
+                ]
+            ];
+
+            return response()->json($response, 400);
+        }
+    }
+
+    public function get_cv(Request $request) 
+    {
+        try {
+            $alumni = new Alumni();
+
+            $get = $alumni::where('id', $request->id)->select('cv')->first();
+
+            $response = [
+                'meta' => [
+                    'code' => '200',
+                    'message' => 'Login has successfully',
+                ],
+                'cv' => 'http://localhost:8000/files/'.$get->cv,
+            ];
+            return response()->json($response, 200);
         } catch (Exception $e) {
             $response = [
                 'meta' => [

@@ -11,8 +11,10 @@ use Illuminate\Http\Request;
 class Controller extends BaseController
 {
     public function mitra(Request $request) {
-        return view('mitra-ikal', [
-            'token' => $request->bearerToken()
-        ]);
+        return view('mitra-ikal');
+    }
+
+    public function register(Request $request) {
+        return view('register');
     }
 }

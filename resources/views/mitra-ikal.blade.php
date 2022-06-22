@@ -148,6 +148,6 @@
             //     })
 
             // })
-        </script> -->
+        </script> 
     <!-- content-wrapper ends
 @endsection

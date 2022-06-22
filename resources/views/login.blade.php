@@ -9,21 +9,20 @@
                     </div>
                     <!-- <h4>Selamat datang di SILOKERNF </h4> -->
                     <h6 class="text-dark">Hallo! Selamat datang</h6>
-                    <p class="text-dark">Silahkan masukan username dan passwod kamu untuk dapat melanjutkan
-                        sebagai admin.</p>
+                    <p class="text-dark">Silahkan masukan username dan passwod!</p>
                     <form class="pt-3">
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" id="input-username"
-                                placeholder="Username" required>
+                            <input type="text" class="form-control form-control-lg" id="input-email"
+                                placeholder="Email" required>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control form-control-lg" id="input-password"
                                 placeholder="Password" required>
                         </div>
+                        <a href="/register" style="font-size: 13px;">Tidak punya akun?</a>
                         <div class="mt-3">
-                            <a href="#" id="btn-login"
-                                class="btn text-white btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</a>
-                        </div>
+                            <button class="btn text-white btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="btn-login">LOGIN</button>
+                        </div>  
                         <!-- <div class="my-2 d-flex justify-content-between align-items-center">
                             <div class="form-check">
                                 <label class="form-check-label text-muted">
@@ -47,9 +46,5 @@
         </div>
     </div>
     <!-- content-wrapper ends -->
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="{{ asset('js/login.js') }}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
 @endsection

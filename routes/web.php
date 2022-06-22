@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
+session_start();
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,15 +16,18 @@ use App\Http\Controllers\Controller;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/home', function () {
+    return view('home', [
+        'token' => $_SESSION["token"]
+    ]);
 });
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login');
 });
 
 Route::get('/mitra-ikal', [Controller::class, 'mitra']);
+Route::get('/register', [Controller::class, 'register']);
 
 Route::get('/tentang', function () {
     return view('tentang');

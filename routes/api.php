@@ -23,18 +23,20 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
 
+    Route::get('/alumni/get/cv', [AlumniController::class, 'get_cv']);
     Route::get('/alumni/list', [AlumniController::class, 'alumni_list']);
     Route::get('/alumni/detail', [AlumniController::class, 'alumni_detail']);
     Route::post('/alumni/store', [AlumniController::class, 'alumni_add']);
     Route::put('/alumni/update', [AlumniController::class, 'alumni_update']);
     Route::delete('/alumni/destroy', [AlumniController::class, 'alumni_destroy']);
-
+    
     Route::get('/partner/list', [PartnerController::class, 'list']);
     Route::post('/partner/store', [PartnerController::class, 'store']);
     Route::post('/partner/update', [PartnerController::class, 'update']);
     Route::get('/partner/detail', [PartnerController::class, 'show']);
     Route::delete('/partner/destroy', [PartnerController::class, 'destroy']);
 
+    Route::post('/job/apply', [JobsController::class, 'apply']);
     Route::post('/job/add', [JobsController::class, 'store']);
     Route::put('/job/update', [JobsController::class, 'update']);
     Route::get('/job/list', [JobsController::class, 'list']);
