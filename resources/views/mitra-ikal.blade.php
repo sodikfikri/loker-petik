@@ -1,9 +1,10 @@
 @extends('layouts.main')
 @section('body_content')
+
     <div class="content-wrapper">
         <div class="row">
             <div class="col-12 mb-4">
-                <div class="row">
+                <div class="row" id="card-rows">
                     <div class="col-md-3">
                         <div class="card">
                             <img class="card-img-top"
@@ -46,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 mb-4">
+            <!-- <div class="col-12 mb-4">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card">
@@ -89,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="col-12 mb-4">
                 <div class="row">
                     <div class="card" style="width: 100%;">
@@ -104,10 +105,10 @@
                                     <label for="exampleInputEmail1">File</label>
                                     <input type="file" class="form-control" name="file">
                                 </div>
-    
+
                                 <button type="submit" id="btn-save" class="btn btn-primary">Primary</button>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -116,13 +117,64 @@
     </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="{{ asset('js/mitra.js') }}"></script>
+
+        <!-- <script src="{{ asset('js/mitra.js') }}"></script> -->
         <script>
+
+            var token = '<?php echo $token ?>'
+            /* show error */
+            function showError(){
+                console.log("Error! blok");
+            }
+
+            /* show all data */
+            function showAllData(items){
+                let data = items['data'];
+                console.log("show data => ", data);
+                $('#card-rows').html('');
+
+                for(var row of data){
+                    let tmplateLiterals = `
+                        <div class="col-md-3 mb-4">
+                            <div class="card">
+                                <img class="card-img-top"
+                                    src=${row.picture} style="height:150px;">
+                                <div class="card-body">
+                                    <h5 class="card-text">${row.company_name}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    // console.log("data => ",data[i]['title']);
+                    // console.log("data => ",data[i]['title']);
+                    $('#card-rows').append(tmplateLiterals);
+                }
+
+            }
+            // load data
+            function loadData(){
+                console.log("token data => ", token);
+                console.log("load data");
+
+            //make request
+                $.ajax({
+                    url:"http://localhost:8000/api/partner/list",
+                    headers:{
+                        Authorization: 'Bearer ' + token
+                    },
+                    type: "GET",
+                    contentType: false,
+                    processData: false,
+                    dataType: "json",
+                    success: showAllData,
+                    error: showError
+                });
+            }
+            loadData();
+
             // $(document).ready(function() {
-                
+
             //     let store = (data) => {
             //         $.ajax({
             //             url: 'http://localhost:8000/api/partner/store',
@@ -138,16 +190,16 @@
             //             }
             //         })
             //     }
-        
+
             //     $('#btn-save').on('click', function(e) {
             //         e.preventDefault()
-        
+
             //         let doc = new FormData($('#addData')[0])
-        
+
             //         store(doc)
             //     })
 
             // })
-        </script> 
+        </script>
     <!-- content-wrapper ends
 @endsection

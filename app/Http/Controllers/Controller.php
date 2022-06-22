@@ -11,7 +11,10 @@ use Illuminate\Http\Request;
 class Controller extends BaseController
 {
     public function mitra(Request $request) {
-        return view('mitra-ikal');
+        session_start();
+        return view('mitra-ikal', [
+            'token' => $_SESSION["token"]
+        ]);
     }
 
     public function register(Request $request) {

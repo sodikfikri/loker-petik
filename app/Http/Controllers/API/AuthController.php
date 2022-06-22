@@ -30,7 +30,7 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors());       
+            return response()->json($validator->errors());
         }
 
         if ($request->type == 2) {
@@ -78,6 +78,8 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // session_destroy();
+        // dd("213");
         if (!Auth::attempt($request->only('email', 'password')))
         {
             $response = [
@@ -90,7 +92,7 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request['email'])->firstOrFail();
-        
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $_SESSION["token"] = $token; // session
@@ -118,7 +120,7 @@ class AuthController extends Controller
                 'message' => 'You have successfully logged out and the token was successfully deleted'
             ]
         ];
-        
+
         return response()->json($response, 200);
     }
 

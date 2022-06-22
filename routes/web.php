@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
-session_start();
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +17,7 @@ session_start();
 */
 
 Route::get('/home', function () {
+    session_start();
     return view('home', [
         'token' => $_SESSION["token"]
     ]);
@@ -30,9 +31,15 @@ Route::get('/mitra-ikal', [Controller::class, 'mitra']);
 Route::get('/register', [Controller::class, 'register']);
 
 Route::get('/tentang', function () {
-    return view('tentang');
+    session_start();
+    return view('tentang',[
+        'token' => $_SESSION["token"]
+    ]);
 });
 
 Route::get('/new_loker', function () {
-    return view('new_loker');
+    session_start();
+    return view('new_loker', [
+        'token' => $_SESSION["token"]
+    ]);
 });
