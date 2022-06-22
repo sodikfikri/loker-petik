@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
-session_start();
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +15,7 @@ session_start();
 */
 
 Route::get('/home', function () {
+    session_start();
     return view('home', [
         'token' => $_SESSION["token"]
     ]);
