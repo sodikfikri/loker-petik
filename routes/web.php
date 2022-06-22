@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 063aa5a3d61c2b80b78a91b6fbd7af2a0fd54c32
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +34,15 @@ Route::get('/mitra-ikal', [Controller::class, 'mitra']);
 Route::get('/register', [Controller::class, 'register']);
 
 Route::get('/tentang', function () {
-    return view('tentang');
+    session_start();
+    return view('tentang',[
+        'token' => $_SESSION["token"]
+    ]);
 });
 
 Route::get('/new_loker', function () {
-    return view('new_loker');
+    session_start();
+    return view('new_loker', [
+        'token' => $_SESSION["token"]
+    ]);
 });

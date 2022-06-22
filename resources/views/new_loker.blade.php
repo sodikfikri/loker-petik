@@ -158,6 +158,7 @@
     <script>
 
 
+        var token = '<?php echo $token ?>'
         /* show error */
         function showError(){
             console.log("Error! blok");
@@ -215,7 +216,7 @@
             $.ajax({
                 url:"http://localhost:8000/api/job/list",
                 headers:{
-                    Authorization: 'Bearer ' + "19|ZGCPnmQYBVPvWssk7IAhoXr3ZXFmb1NLWjwusqut"
+                    Authorization: 'Bearer ' + token
                 },
                 type: "GET",
                 contentType: "aplication/json",
