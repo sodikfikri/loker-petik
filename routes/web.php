@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 063aa5a3d61c2b80b78a91b6fbd7af2a0fd54c32
 /*
 |--------------------------------------------------------------------------
 | Web Routes
