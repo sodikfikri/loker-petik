@@ -35,7 +35,7 @@ class AuthController extends Controller
 
         if ($request->type == 2) {
             if ($file = $request->file('cv')) {
-                $name = time() . '.' . $file->getClientOriginalName(); // file name
+                $name = time().'.cv.'.$request->name;
 
                 $moveTo = 'files';
                 $file->move($moveTo, $name);
@@ -96,6 +96,12 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $_SESSION["token"] = $token; // session
+        if($user->type == 1){
+            $data = $user;
+        } else {
+            $data = Alumni::where('id', $user->alumni_id)->first();
+            $_SESSION["alumni_id"] = $data->id;
+        }
 
         $response = [
             'meta' => [

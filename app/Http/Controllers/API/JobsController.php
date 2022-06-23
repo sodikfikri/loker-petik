@@ -28,7 +28,7 @@ class JobsController extends Controller
                         'message' => 'Dat is empty'
                     ]
                 ];
-    
+
                 return response()->json($response, 200);
             }
 
@@ -47,6 +47,7 @@ class JobsController extends Controller
                 }
 
                 $arr[$key] = [
+                    'id' => $val->id,
                     'partner_name' => $val->company_name,
                     'title' => $val->title,
                     'body' => $val->body,
@@ -56,7 +57,7 @@ class JobsController extends Controller
                     'created_at' => $val->created_at
                 ];
             }
-            
+
             $response = [
                 'meta' => [
                     'code' => '200',
@@ -111,7 +112,7 @@ class JobsController extends Controller
                     'message' => 'Resource is added successfully'
                 ]
             ];
-    
+
             return response()->json($response, 201);
 
         } catch (Exception $e) {
@@ -126,7 +127,7 @@ class JobsController extends Controller
         }
     }
 
-    public function update(Request $request) 
+    public function update(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
@@ -154,7 +155,7 @@ class JobsController extends Controller
                         'message' =>'Resource not found'
                     ]
                 ];
-    
+
                 return response()->json($response, 404);
             }
 
@@ -199,7 +200,7 @@ class JobsController extends Controller
                         'message' => 'Resource not found'
                     ]
                 ];
-    
+
                 return response()->json($response, 404);
             }
             // success response
@@ -210,7 +211,7 @@ class JobsController extends Controller
                 ],
                 'data' => $data
             ];
-    
+
             return response()->json($response, 200);
         } catch (Exception $e) {
             $response = [
@@ -228,7 +229,7 @@ class JobsController extends Controller
     {
         try {
             $data = Jobs::where('id', $request->id)->first();
-            
+
             if ($data == null) {
                 $response = [
                     'meta' => [
@@ -236,7 +237,7 @@ class JobsController extends Controller
                         'message' => 'Resource not found'
                     ]
                 ];
-    
+
                 return response()->json($response, 404);
             }
 
@@ -248,7 +249,7 @@ class JobsController extends Controller
                     'message' => 'Resource is delete successfully'
                 ]
             ];
-    
+
             return response()->json($response, 200);
         } catch (Exception $e) {
             $response = [
@@ -262,12 +263,12 @@ class JobsController extends Controller
         }
     }
 
-    public function apply(Request $request) 
+    public function apply(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
-                'job_id' => 'required|numeric',
-                'alumni_id' => 'required|numeric'
+                'job_id' => 'required',
+                'alumni_id' => 'required'
             ]);
 
             if ($validator->fails()) { // validation is fail
@@ -287,7 +288,7 @@ class JobsController extends Controller
                     'message' => 'Resource is added successfully'
                 ]
             ];
-    
+
             return response()->json($response, 201);
 
         } catch (Exception $e) {

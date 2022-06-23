@@ -1,5 +1,5 @@
 jQuery(function($){
 
-    alert(token)
+    // alert(token)
 
 })
