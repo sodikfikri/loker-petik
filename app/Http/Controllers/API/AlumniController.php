@@ -16,7 +16,7 @@ session_start();
 
 class AlumniController extends Controller
 {
-    public function alumni_list(Request $request) 
+    public function alumni_list(Request $request)
     {
         try {
             $list = DB::table('alumni')->get();
@@ -45,7 +45,7 @@ class AlumniController extends Controller
                 ];
                 return response()->json($response, 200);
             }
-            
+
         } catch (Exception $e) {
             $response = [
                 'meta' => [
@@ -68,7 +68,7 @@ class AlumniController extends Controller
                 'address' => 'required',
                 'period' => 'required|numeric'
             ]);
-            
+
             if ($validator->fails()) { // validation is fail
                 return response()->json($validator->errors());
             }
@@ -84,7 +84,7 @@ class AlumniController extends Controller
                         'message' => 'Data already exists'
                     ]
                 ];
-    
+
                 return response()->json($response, 409);
             }
 
@@ -102,7 +102,7 @@ class AlumniController extends Controller
                     'message' => 'Resource is added successfully'
                 ]
             ];
-    
+
             return response()->json($response, 201);
 
         } catch (Exception $e) {
@@ -123,6 +123,7 @@ class AlumniController extends Controller
             $alumni = new Alumni();
 
             $detail = $alumni::where('id', $request->id)->first();
+            $detail->cv='http://localhost:8000/files/'.$detail->cv;
 
             if ($detail == null) {
                 $response = [
@@ -131,7 +132,7 @@ class AlumniController extends Controller
                         'message' => 'Resource not found'
                     ]
                 ];
-    
+
                 return response()->json($response, 404);
             }
             // success response
@@ -142,7 +143,7 @@ class AlumniController extends Controller
                 ],
                 'data' => $detail
             ];
-    
+
             return response()->json($response, 200);
         } catch (Exception $e) {
             $response = [
@@ -159,7 +160,7 @@ class AlumniController extends Controller
     public function alumni_update(Request $request)
     {
         try {
-            
+
             $validator = Validator::make($request->all(), [
                 'id' => 'required|numeric',
                 'name' => 'required',
@@ -168,7 +169,7 @@ class AlumniController extends Controller
                 'address' => 'required',
                 'period' => 'required|numeric'
             ]);
-            
+
             if ($validator->fails()) { // validation is fail
                 return response()->json($validator->errors());
             }
@@ -183,7 +184,7 @@ class AlumniController extends Controller
                         'message' =>'Resource not found'
                     ]
                 ];
-    
+
                 return response()->json($response, 404);
             }
 
@@ -228,7 +229,7 @@ class AlumniController extends Controller
                         'message' => 'Resource not found'
                     ]
                 ];
-    
+
                 return response()->json($response, 404);
             }
 
@@ -240,7 +241,7 @@ class AlumniController extends Controller
                     'message' => 'Resource is delete successfully'
                 ]
             ];
-    
+
             return response()->json($response, 200);
 
         } catch (Exception $e) {
@@ -255,7 +256,7 @@ class AlumniController extends Controller
         }
     }
 
-    public function get_cv(Request $request) 
+    public function get_cv(Request $request)
     {
         try {
             $alumni = new Alumni();

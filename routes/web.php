@@ -3,11 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 063aa5a3d61c2b80b78a91b6fbd7af2a0fd54c32
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +40,7 @@ Route::get('/tentang', function () {
 Route::get('/new_loker', function () {
     session_start();
     return view('new_loker', [
-        'token' => $_SESSION["token"]
+        'token' => $_SESSION["token"],
+        'alumni_id' => $_SESSION["alumni_id"]
     ]);
 });

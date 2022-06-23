@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use Exception;
 use Validator;
@@ -88,7 +88,7 @@ class PartnerController extends Controller
                         'message' => 'Resource is added successfully'
                     ]
                 ];
-        
+
                 return response()->json($response, 201);
             }
 
@@ -118,7 +118,7 @@ class PartnerController extends Controller
                         'message' => 'Resource not found'
                     ]
                 ];
-    
+
                 return response()->json($response, 404);
             }
             // success response
@@ -129,7 +129,7 @@ class PartnerController extends Controller
                 ],
                 'data' => $get_data
             ];
-    
+
             return response()->json($response, 200);
         } catch (Exception $e) {
             $response = [
@@ -143,7 +143,7 @@ class PartnerController extends Controller
         }
     }
 
-    public function update(Request $request) 
+    public function update(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
@@ -213,7 +213,7 @@ class PartnerController extends Controller
                         'message' => 'Resource not found'
                     ]
                 ];
-    
+
                 return response()->json($response, 404);
             }
 
@@ -225,7 +225,7 @@ class PartnerController extends Controller
                     'message' => 'Resource is delete successfully'
                 ]
             ];
-    
+
             return response()->json($response, 200);
 
         } catch (Exception $e) {

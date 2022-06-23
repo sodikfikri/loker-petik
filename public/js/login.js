@@ -1,9 +1,9 @@
 jQuery(function($){
-    
+
     let State = {
         APIURL: 'http://localhost:8000'
     }
-    
+
     let Login = {}
 
     Login.activate = function() {
@@ -36,7 +36,7 @@ jQuery(function($){
                     email: $('#input-email').val(),
                     password: $('#input-password').val()
                 }
-                
+
                 Login.API.login(params)
             })
         }
