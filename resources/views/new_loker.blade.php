@@ -319,6 +319,12 @@
             });
         });
 
+        $(document).ready(function(){
+            $("#close_modal").click(function(){
+                $("#myModal").modal('hide');
+            });
+        });
+
         /* Load Data User */
         function loadDataUser(){
             console.log("load data User");
